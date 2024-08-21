@@ -1,4 +1,5 @@
 <template>
+  <div class="footer-line"></div>
     <footer class="container-fluid">
       <div class="row">
           <p class="footer">All rights reserved &copy; 
@@ -30,4 +31,9 @@ export default {
  .footer {
     color: #decb9d;
  }
+ .footer-line {
+    height: 1px; 
+    background-color: #decb9d;
+    margin-bottom: 10px;
+}
 </style>

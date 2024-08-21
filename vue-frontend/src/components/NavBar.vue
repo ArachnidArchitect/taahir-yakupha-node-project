@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link" id="navBar" aria-current="page" to="#home">home</router-link>
+              <router-link class="nav-link" id="navBar" aria-current="page" to="/home">home</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link"  id="navBar" to="#about">about</router-link>
+              <router-link class="nav-link"  id="navBar" to="/about">about</router-link>
             </li>
     
     
@@ -35,7 +35,8 @@
 nav{
   background-image: linear-gradient(to bottom, black , rgba(0, 0, 0, 0)80%);
 }
-a:hover{
+#navBar:hover{
   color: white;
+  font-size: 1.2rem;
 }
 </style>

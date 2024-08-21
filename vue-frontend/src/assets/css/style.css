@@ -24,7 +24,7 @@ nav {
     padding: 30px;
     font-weight: bold;
 }
-nav a.router-link-exact-active {
+#navBar {
     color: #decb9d;
 }
 

@@ -1,13 +1,13 @@
 <template>
   <div class="row">
-    <div class="col">
+    <div class="col-6">
       <h1 class="radiant">RADIANT <span class="rubies"> RUBIES</span></h1>
       <p class="home-subtext">Beauty. Elegance. Demure.<br> Always</p>
       <button class="shopnow">SHOP NOW</button>
     </div>
 
 
-    <div class="col">
+    <div class="col-6">
       <div class="card" style="width: 20rem;">
   <img src="https://yakuphantonintshi.github.io/myimages/Images/main_pic.png" class="card-img-top" alt="image">
   <div class="card-body">
@@ -39,6 +39,18 @@ export default {
   color: white;
   border: 2px solid #e7c162;
 }
+.shopnow:hover{
+  background-color: #e7c162;
+  color: white;
+}
+
+.btn:hover{
+  background-color: #e7c162;
+  color: white;
+  border: 2px solid #e7c162;
+}
+
+
 
 .card{
   background-color: transparent;
@@ -47,7 +59,8 @@ export default {
 }
 .row{
   max-height: 50vh;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
+  
 }
 
 
