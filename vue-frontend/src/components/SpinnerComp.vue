@@ -15,5 +15,7 @@
  </script>
  
  <style scoped>
- 
+ .spinner-border{
+    color: #e7c162;
+ }
  </style>

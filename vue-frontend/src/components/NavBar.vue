@@ -18,13 +18,13 @@
     
     
             <li class="nav-item">
-              <router-link class="nav-link"  id="navBar" to="#products">products</router-link>
+              <router-link class="nav-link"  id="navBar" to="/products">products</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link"  id="navBar" to="#admin">admin</router-link>
+              <router-link class="nav-link"  id="navBar" to="/admin">admin</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link"  id="navBar" to="#reachMe">contact us</router-link>
+              <router-link class="nav-link"  id="navBar" to="/contact">contact us</router-link>
             </li>
             </ul>
         </div>
