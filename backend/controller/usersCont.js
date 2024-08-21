@@ -1,4 +1,5 @@
 import {getusersDb, getuserDb, adduserDb, updateuserDb, deleteuserDb} from '../model/usersDb.js'
+import {hash} from 'bcrypt'
 // get
 const getusers = async(req, res)=>{
  res.json(await getusersDb())
@@ -8,10 +9,17 @@ const getuser = async(req, res)=>{
 }
 
 // post
-const adduser = async(res,req)=>{
-    let   {name, quantity, amount, category, prodUrl} = res.body
+const adduser = async(req,res)=>{
+    // gets the values from the form
+    let   {fname, lname, age, gender, role, email, password, profile} = req.body
+
+    // hashes the password and the 
+    let encryptedPass = await hash(password, 10)
+    console.log(encryptedPass);
+    if(encryptedPass.stack) throw (encryptedPass)
     // console.log(name)
-await  adduserDb(name, quantity, amount, category, prodUrl)
+await  adduserDb(fname, lname, age, gender, role, email, encryptedPass, profile)
+res.send('user was added')
 }
 
 // patch
@@ -41,4 +49,12 @@ const deleteuser = async(req,res)=>{
     res.send('delete is successful');
 }
 
-export {getusers, getuser, adduser,updateuser, deleteuser}
+// login
+const loginUser = (req, res)=>{
+    res.json({
+        message:"you have signed in!!",
+        token:req.body.token
+    })
+
+}
+export {getusers, getuser, adduser,updateuser, deleteuser,loginUser}
