@@ -5,7 +5,7 @@ const getusers = async(req, res)=>{
  res.json(await getusersDb())
 }
 const getuser = async(req, res)=>{
- res.json(await getusersDb(req.params.id))
+ res.json(await getuserDb(req.params.id))
 }
 
 // post
@@ -25,27 +25,31 @@ res.send('user was added')
 // patch
 const updateuser = async(req,res)=>{
     // gets the values that were inserted through the form
- let   {name, quantity, amount, category, prodUrl} = req.body
+ let   {fname, lname, age, gender, role, email, password, profile} = req.body
  let    id = req.params.id
     //checks if the values are empty and returns the value that is in the database
 let storedValue = await getuserDb(id)
-name?name=name:name = storedValue[0].user_name
-quantity?quantity=quantity:quantity = storedValue[0].quantity
-amount?amount=amount:amount = storedValue[0].amount
-category?category=category:category = storedValue[0].category
-prodUrl?prodUrl=prodUrl:prodUrl = storedValue[0].prodUrl
+console.log(storedValue)
+fname?fname=fname:fname = storedValue[0].first_name
+lname?lname=lname:lname = storedValue[0].last_name
+age?age=age:age = storedValue[0].user_age
+gender?gender=gender:gender = storedValue[0].gender
+role?role=role:role = storedValue[0].user_role
+email?email=email:email = storedValue[0].email_add
+password?password=password:password = storedValue[0].user_pass
+profile?profile=profile:profile = storedValue[0].user_profile
 
 
 
     // gets the function from model
- await updateuserDb(name, quantity, amount, category, prodUrl, id)
+ await updateuserDb(fname, lname, age, gender, role, email, password, profile, id)
     res.send('Item was updated successfully!!')
 
 }
 
 // delete
 const deleteuser = async(req,res)=>{
-    res.json(await deleteuserDb(req.params.id))
+    await deleteuserDb(req.params.id)
     res.send('delete is successful');
 }
 

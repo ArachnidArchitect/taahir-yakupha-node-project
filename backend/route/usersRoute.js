@@ -10,7 +10,7 @@ router.get('/:id',getuser)
 // post
 router.post('/register',adduser)
 // patch
-router.patch('update/:id', updateuser)
+router.patch('/update/:id', updateuser)
 // delete
 router.delete('/delete/:id', deleteuser)
 // login

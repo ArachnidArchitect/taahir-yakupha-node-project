@@ -23,7 +23,7 @@ const adduserDb = async(first_name, last_name, user_age, gender, user_role, emai
 
 // patch
 const updateuserDb = async(first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile, id)=>{
-    await pool.query('UPDATE users SET first_name = ?, last_name=?, user_age=?, gender=?, user_role = ?,email_add=?, user_pass=?, user_profile  WHERE user_id = ?', [first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile, id])
+    await pool.query('UPDATE users SET first_name = ?, last_name=?, user_age=?, gender=?, user_role = ?,email_add=?, user_pass=?, user_profile=?  WHERE user_id = ?', [first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile, id])
 }
 // delete
 const deleteuserDb = async(id)=>{
