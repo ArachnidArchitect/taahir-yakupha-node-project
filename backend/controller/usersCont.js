@@ -24,6 +24,7 @@ res.send('user was added')
 
 // patch
 const updateuser = async(req,res)=>{
+    try{
     // gets the values that were inserted through the form
  let   {fname, lname, age, gender, role, email, password, profile} = req.body
  let    id = req.params.id
@@ -43,7 +44,10 @@ profile?profile=profile:profile = storedValue[0].user_profile
 
     // gets the function from model
  await updateuserDb(fname, lname, age, gender, role, email, password, profile, id)
-    res.send('Item was updated successfully!!')
+    res.status(200).send('Item was updated successfully!!')
+}catch(error){
+    res.status(400).send('Error')
+}
 
 }
 

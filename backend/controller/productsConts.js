@@ -8,8 +8,8 @@ const getProduct = async(req, res)=>{
 }
 
 // post
-const addProduct = async(res,req)=>{
-    let   {name, quantity, amount, category, prodUrl} = res.body
+const addProduct = async(req,res)=>{
+    let   {name, quantity, amount, category, prodUrl} = req.body
     // console.log(name)
 await  addProductDb(name, quantity, amount, category, prodUrl)
 }
@@ -37,7 +37,7 @@ prodUrl?prodUrl=prodUrl:prodUrl = storedValue[0].prodUrl
 
 // delete
 const deleteProduct = async(req,res)=>{
-    res.json(await deleteProductDb(req.params.id))
+    await deleteProductDb(req.params.id)
     res.send('delete is successful');
 }
 
