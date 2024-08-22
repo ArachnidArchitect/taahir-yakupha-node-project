@@ -12,6 +12,7 @@ const addProduct = async(req,res)=>{
     let   {name, quantity, amount, category, prodUrl} = req.body
     // console.log(name)
 await  addProductDb(name, quantity, amount, category, prodUrl)
+res.json(await getProductsDb())
 }
 
 // patch
@@ -31,14 +32,14 @@ prodUrl?prodUrl=prodUrl:prodUrl = storedValue[0].prodUrl
 
     // gets the function from model
  await updateProductDb(name, quantity, amount, category, prodUrl, id)
-    res.send('Item was updated successfully!!')
+    res.json(await getProductsDb())
 
 }
 
 // delete
 const deleteProduct = async(req,res)=>{
     await deleteProductDb(req.params.id)
-    res.send('delete is successful');
+    res.json(await getProductsDb());
 }
 
 export {getProducts, getProduct, addProduct,updateProduct, deleteProduct}
