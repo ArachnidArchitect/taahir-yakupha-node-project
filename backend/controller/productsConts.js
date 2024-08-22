@@ -4,7 +4,7 @@ const getProducts = async(req, res)=>{
  res.json(await getProductsDb())
 }
 const getProduct = async(req, res)=>{
- res.json(await getProductsDb(req.params.id))
+ res.json(await getProductDb(req.params.id))
 }
 
 // post
