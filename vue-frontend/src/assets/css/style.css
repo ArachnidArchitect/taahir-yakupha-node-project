@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 *,
 *::after,
 *::before {
@@ -18,6 +19,7 @@
     text-align: center;
     background-image: url('https://yakuphantonintshi.github.io/myimages/Images/background.png');
     background-size: cover;
+    
 }
 
 nav {
@@ -25,15 +27,15 @@ nav {
     font-weight: bold;
 }
 #navBar {
-    color: #decb9d;
+    color: #E7C162;
 }
 
 /* Logo */
 img[alt='logo'] {
-    width: 5rem;
-    aspect-ratio: 1;
+    width: 50px;
     object-fit: cover;
     object-position: center;
+
 }
 
 .wrapper {

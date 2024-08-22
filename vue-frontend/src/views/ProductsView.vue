@@ -1,20 +1,21 @@
 <template>
     <div class="container-fluid">
-        <div class="row">
-          <h2 class="display-2">Products</h2>
-        </div>
-        <div class="row gap-5 justify-content-center" v-if="recentProducts">
-          <CardComp v-for="product in recentProducts" :key="product.productID" id="cardBorder">
+        <h2 class="display-2">Products</h2>
+        <input type="text" placeholder="search..." class="input">
+        
+        <div class="card-display" v-if="products">
+          <CardComp v-for="product in products" :key="product.products_id" id="cardBorder">
             <template #cardHeader>
-             <h1>{{ product.prodName }}</h1> 
+             <h1>{{ product.product_name }}</h1> 
             
-              <img :src="product.prodURL" loading="lazy" class="img-fluid" :alt="product.prodName">
+              <img :src="product.prodUrl" loading="lazy" class="img-fluid prod-prev" :alt="product.product_name">
             </template>
             <template #cardBody>
-                <h5 class="card-title">{{ product.category }}</h5>
-              <p class="lead">{{ product.prodDescri }}</p>
-              <p class="lead">Amount: R{{ product.amount }}</p>
-              <button>PRODUCT DETAILS</button>
+                <div class="row">
+              <div class="lead">Qty:{{ product.quantity }}</div >
+              <div >R{{ product.amount }}</div >
+            </div>
+              <button type="button" class="product">VIEW MORE DETAILS</button>
             </template>
           </CardComp>
         </div>
@@ -26,6 +27,7 @@
     
     <script>
     
+    
     import CardComp from '@/components/CardComp.vue'
     import SpinnerComp from '@/components/SpinnerComp.vue'
     export default {
@@ -35,15 +37,14 @@
         SpinnerComp
       },
   computed: {
-    recentProducts() {
-      return this.$store.state.recentProducts
+    products() {
+      return this.$store.state.products
+
     }
   },
   mounted() {
-    this.$store.dispatch('recentProducts')
-    console.log(this.recentProducts)
-  }
-
+    this.$store.dispatch('fetchProducts')
+  },
 }
 
     </script>
@@ -52,10 +53,15 @@
     h2{
         color: #e7c162;
     }
-    #cardBorder{
-  border: 3px solid #e7c162;
-  background-color: transparent;
- }
+
+    .card-display{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        width: 80%;
+        margin: 0 auto;
+        
+    }
+
  :is(p, h5) {
     color: white;
  }
@@ -67,6 +73,44 @@
  }
  h1{
     color: #e7c162;
+ }
+ .prod-prev{
+    width: 250px;
+    height: auto;
+ }
+ .product{
+    width: 150px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #e7c162;
+    border-top: 2px solid #e7c162;
+    border-left: 2px solid #e7c162;
+ }
+ .product:hover{
+    background-color: #e7c162;
+    color: white;
+ }
+ .input{
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 15rem;
+    width: 180px;
+    padding-left: 8px;
+ }
+ img{
+    border: 2px solid #e7c162;
+ }
+ .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    width: 75%;
+  
+ }
+ .row>*{
+    width: fit-content;
  }
    
     </style>

@@ -7,7 +7,7 @@ import 'vue3-toastify/dist/index.css'
 
 // const {cookies} = useCookies()
 
-const apiURL = 'http://localhost:3001/'
+const apiURL = 'https://taahir-yakupha-node-project.onrender.com/'
 
 export default createStore({
   state: {
@@ -58,11 +58,12 @@ export default createStore({
     },
     async fetchProducts(context) {
       try {
-        const { results, msg} = await (await axios.get(`${apiURL}product`)).data
-        if (results) {
+        const response = await axios.get(`${apiURL}products`)
+        const results = response.data
+       if (results) {
           context.commit('setProducts', results)
         } else {
-          toast.error(`${msg}`, {
+          toast.error(`oops`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
@@ -74,13 +75,17 @@ export default createStore({
         })
       }
     },
-    async fetchProduct(context, id) {
+    async fetchProduct(context, {id}) {
       try {
-        const { result, msg} = await (await axios.get(`${apiURL}product/${id}`)).data
+        console.log(id);
+        const response = await axios.get(`${apiURL}products/${id}`)
+        const result = response.data
+        console.log(result)
         if (result) {
           context.commit('setProduct', result)
+          
         } else {
-          toast.error(`${msg}`, {
+          toast.error(`fcgvb`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
@@ -112,9 +117,11 @@ export default createStore({
     },
     async fetchUser(context, id) {
       try {
-        const { result, msg} = await (await axios.get(`${apiURL}user/${id}`)).data
-        if (result) {
-          context.commit('setUser', result)
+        const {data,msg} = await (await axios.get(`${apiURL}users/${id}`)).data
+        console.log(data)
+        if (data) {
+          context.commit('setUser', data)
+          console.log(data)
         } else {
           toast.error(`${msg}`, {
             autoClose: 2000,
@@ -127,7 +134,22 @@ export default createStore({
           position: toast.POSITION.BOTTOM_CENTER
         })
       }
-    }
+    },
+    async editProduct({commit}, {id, name, amount, url}){
+        const res = await axios({
+          method: "POST",
+          data: {
+            name: name,
+            amount:amount,
+            prodUrl:url
+          },
+          withCredentials: true,
+          url: `${apiURL}/update/${id}`,
+        })
+        console.log(res.json())
+        commit('setProducts',res.json())
+      },
+
   },
   modules: {
   }

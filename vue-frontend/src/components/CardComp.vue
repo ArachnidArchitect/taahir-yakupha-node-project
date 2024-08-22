@@ -22,6 +22,14 @@
   <style scoped>
   .card {
       width: 18rem;
+      border: 3px solid #e7c162;
+      background-color: transparent;
+      margin: 1em;
+  }
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   </style>

@@ -32,12 +32,7 @@
  span{
   color: #decb9d;
  }
-img{
-  border: 2px solid gold;
-}
-.container-fluid{
-  background-color: black;
-}
+
 
   
   

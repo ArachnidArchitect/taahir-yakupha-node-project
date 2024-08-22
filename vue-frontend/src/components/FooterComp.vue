@@ -1,16 +1,13 @@
 <template>
   <div class="footer-line"></div>
     <footer class="container-fluid">
-      <div class="row">
-          <p class="footer">All rights reserved &copy; 
+      
+          <span class="footer">All rights reserved &copy; 
 
-            {{ cYear }}
-
-            <span class="footer">RR</span>
-
-             
-      </p>
-      </div>
+            {{ cYear }}             
+      </span>
+      <span >RR</span>
+      <span></span>
   
     </footer>
   </template>
@@ -28,12 +25,22 @@ export default {
 </script>
 
 <style scoped>
- .footer {
+ footer {
     color: #decb9d;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:#0E0F10;
+    border-top: 2px solid #C79945;
+    padding:1em;
+    font-size: 2ch;
+
+    font-family: "Tinos", serif;
+  font-weight: 700;
+  font-style: normal;
+
  }
- .footer-line {
-    height: 1px; 
-    background-color: #decb9d;
-    margin-bottom: 10px;
+span.footer{
+  font-weight: 400;
 }
 </style>
