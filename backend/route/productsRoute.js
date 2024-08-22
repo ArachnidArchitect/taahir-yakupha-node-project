@@ -9,7 +9,7 @@ router.get('/:id',getProduct)
 // post
 router.post('/addProduct',addProduct)
 // patch
-router.patch('update/:id', updateProduct)
+router.patch('/update/:id', updateProduct)
 // delete
 router.delete('/delete/:id', deleteProduct)
 
