@@ -206,22 +206,31 @@ export default createStore({
       const res = await axios({
         method: "POST",
         data: {
-          newUserName,
-          newLastName,
-          newAge, 
-        newGender, 
-        newRole,
-        newEmail,
-        newPass,
-        newUserProfile
+          fname:newUserName,
+          lname:newLastName,
+          age:newAge, 
+        gender:newGender, 
+        role:newRole,
+        email:newEmail,
+        password:newPass,
+        profile:newUserProfile
 
         },
         withCredentials: true,
-        url: `${apiURL}users/addUser`
+        url: `${apiURL}users/register`
       })
       console.log(res.data)
         commit('setUsers',res.data)
-    }
+    },
+    async deleteUser({commit}, {id}){
+      const res = await axios({
+        method: "DELETE",
+        url: `${apiURL}users/delete/${id}`,
+        
+    })
+    console.log(res.data)
+        commit('setUsers',res.data)
+  },
   },
   
   modules: {
