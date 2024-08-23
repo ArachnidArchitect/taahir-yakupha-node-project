@@ -117,5 +117,10 @@ align-items: end;
 
 }
 
+@media only screen and (max-width: 840px) {
+ 
+}
+
+
 
 </style>
