@@ -118,5 +118,19 @@
  .row>*{
     width: fit-content;
  }
-   
+
+ @media screen and (max-width: 400px){
+    .container-fluid{
+      width: 200px;
+    }
+    .card{
+      width: 200px;
+    }
+    .input{
+      margin-left: 19px;
+    }
+ }
+ 
+
+
     </style>

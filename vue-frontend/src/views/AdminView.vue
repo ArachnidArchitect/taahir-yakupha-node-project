@@ -119,6 +119,9 @@
     </tr>
   </table>
 </div>
+<div v-else>
+<SpinnerComp/>
+</div>
 </div>
   <div class="product">
     <h2>PRODUCT TABLE</h2>
@@ -255,7 +258,11 @@
 </template>
 
 <script>
+import SpinnerComp from '@/components/SpinnerComp.vue'
 export default {
+  components: {
+    SpinnerComp
+  },
   data(){
     return {
       selectedProd:null,
@@ -423,5 +430,8 @@ input {
 }
 #add-product-Label{
   color: #e7c162;
+}
+@media screen and(max-width: 400){
+   
 }
 </style>

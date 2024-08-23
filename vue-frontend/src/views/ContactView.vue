@@ -56,6 +56,18 @@ p{
     color: white;
     background-color: #e7c162;
 }
+@media screen and (max-width: 400px){
+    input{
+        width: 280px;
+    }
+    img{
+        width: 300px;
+    }
+    form{
+        width: 300px;
+    }
+}
+
 
 
 </style>

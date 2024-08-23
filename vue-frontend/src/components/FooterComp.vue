@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="footer-line"></div>
     <footer class="container-fluid">
       
@@ -10,6 +11,7 @@
       <span></span>
   
     </footer>
+  </div>
   </template>
 
 <script>

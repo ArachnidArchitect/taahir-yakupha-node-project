@@ -1,85 +1,110 @@
 <template>
   <div class="row">
-    <div class="home-text ">
+    <div class="home-text">
       <h1 class="radiant">RADIANT <span class="rubies"> RUBIES</span></h1>
-      <p class="home-subtext">Beauty. Elegance. Demure.<br> Always</p>
-      <button type="button" class="shopnow"><router-link to="/products">SHOP NOW</router-link>  
-          
-        </button>
+      <p class="home-subtext">
+        Beauty. Elegance. Demure.<br />
+        Always
+      </p>
+      <button type="button" class="shopnow">
+        <router-link to="/products">SHOP NOW</router-link>
+      </button>
     </div>
 
-
     <div class="home-column">
-      <div class="card" style="width: 20rem;">
-  <img src="https://yakuphantonintshi.github.io/myimages/Images/main_pic.png" class="card-img-top" alt="image">
-  <div class="card-body">
-    <h5 class="card-title">24K Gold Earrings</h5>
-    <p class="card-text">R2000</p>
-    <p class="card-text">500g</p>
-    <a href="#" class="btn btn-primary">PRODUCT DETAILS</a>
-  </div>
-</div>
+      <div class="card">
+        <img
+          src="https://yakuphantonintshi.github.io/myimages/Images/main_pic.png"
+          class="card-img-top"
+          alt="image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">24K Gold Earrings</h5>
+          <p class="card-text">R2000</p>
+          <p class="card-text">500g</p>
+          <a href="#" class="btn btn-primary">PRODUCT DETAILS</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
-
 export default {
-  name: 'HomeView',
-  components: {
-    
-  }
-}
+  name: "HomeView",
+  components: {},
+};
 </script>
 
 <style scoped>
-
-a{
+a {
   color: #e7c162;
   text-decoration: none;
 }
 
-
-.btn{
+.btn {
   background-color: #e7c162;
   color: white;
   border: 2px solid #e7c162;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #e7c162;
   color: white;
   border: 2px solid #e7c162;
 }
-.home-text{
+.home-text {
   display: flex;
-  flex-direction: column ;
-  width:60%;
+  flex-direction: column;
+  width: 60%;
   justify-content: space-around;
   padding-left: 5em;
   height: 50vh;
 }
-.home-column{width: 40%;}
+.home-column {
+  width: 40%;
+}
 
-.card{
+.card {
   background-color: black;
   border: 4px solid #e7c162;
   color: white;
   box-shadow: 1px 1px 50px #e7c162a8;
+  width: 20rem;
 }
-.row{
-text-align: start;
-display: flex;
-flex-direction: row;
-align-items: end;
-  
+@media screen and (max-width: 875px) {
+  .card {
+    width: 14rem;
+  }
+}
+.row {
+  text-align: start;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
 }
 
+@media screen and (max-width: 430px) { 
+  .card{
+    display: none;
+  }
+  .rubies {
+   font-size: 2rem;
+  }
+}
 
-.shopnow{
+/* @media screen and (max-width: 620px){
+  .row{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    --bs-gutter-x: 0;
+  }
 
+} */
+
+.shopnow {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-style: normal;
@@ -91,36 +116,27 @@ align-items: end;
   border: 2px solid #e7c162;
   color: #e7c162;
 }
-.shopnow:hover{
-  background-color: #e7c162 ;
+.shopnow:hover {
+  background-color: #e7c162;
 }
-.shopnow:hover a{
- color: white ;
+.shopnow:hover a {
+  color: white;
 }
-.radiant{
+.radiant {
   color: #e7c162;
   font-family: "Tinos", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3.5em;
-
+  font-size: 3em;
 }
-.rubies{
+.rubies {
   color: #decb9d;
 }
-.home-subtext{
+.home-subtext {
   color: white;
   padding-left: 2em;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-style: normal;
-
 }
-
-@media only screen and (max-width: 840px) {
- 
-}
-
-
-
 </style>
