@@ -15,7 +15,7 @@
               <div class="lead">Qty:{{ product.quantity }}</div >
               <div >R{{ product.amount }}</div >
             </div>
-              <button type="button" class="product">VIEW MORE DETAILS</button>
+              <button type="button" class="product" @click="setViewProduct(product.products_id)">VIEW MORE DETAILS</button>
             </template>
           </CardComp>
         </div>
@@ -30,11 +30,17 @@
     
     import CardComp from '@/components/CardComp.vue'
     import SpinnerComp from '@/components/SpinnerComp.vue'
+
     export default {
       name: 'ProductView',
       components: {
         CardComp, 
         SpinnerComp
+      },
+      methods:{
+        setViewProduct(id){
+          this.$router.push({name: 'singleProduct', params: {id: id}})
+        }
       },
   computed: {
     products() {

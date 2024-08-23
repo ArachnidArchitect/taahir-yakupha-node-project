@@ -93,24 +93,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" placeholder="first name" id="firstName">
-        <input type="text" placeholder="last name" id="lastName">
-        <input type="number" placeholder="age" id="age">
-        <input type="text" placeholder="gender" id="gender">
-        <input type="text" placeholder="user role" id="role">
-        <input type="text" placeholder="email address" id="email">
-        <input type="text" placeholder="password" id="password">
-        <input type="text" placeholder="user profile" id="profile">
+        <input type="text" :value="user.first_name" id="firstName">
+        <input type="text" :value="user.last_name" id="lastName">
+        <input type="number" :value="user.user_age" id="age">
+        <input type="text" :value="user.gender" id="gender">
+        <input type="text" :value="user.user_role" id="role">
+        <input type="text" :value="user.email_add" id="email">
+        <input type="text" :value="user.user_pass" id="password">
+        <input type="text" :value="user.user_profile" id="profile">
       </div>
       <div class="modal-footer">
+        <!-- edit user save button -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+<!-- delete user button -->
         </button>
-        <button type="button" class="delete">
+        <button type="button" class="delete" @click="deleteUser(user.user_id)">
           <i class="bi bi-trash"></i>
         </button>
       </td>
@@ -329,7 +331,16 @@ export default {
       let newPass = document.querySelector('#new-user-pass').value
       let newUserProfile = document.querySelector('#new-user-profile').value
 
-      this.$store.dispatch('addUser', {newUser: newUserName, newLastName, newAge, newGender, newRole, newEmail, newPass, newUserProfile})
+      this.$store.dispatch('addUser', {newUserName, newLastName, newAge, newGender, newRole, newEmail, newPass, newUserProfile})
+      location.reload()
+    },
+    deleteUser(id){
+      if(confirm("are you sure you want to delete this user")){
+        this.$store.dispatch('deleteUser', {id:id})
+        location.reload()
+      }else{
+        alert("action was aborted")
+      }
     }
 
   },
@@ -347,6 +358,7 @@ td {
   /* border-collapse: collapse; */
   border: 4px solid white;
   color: white;
+  width:80%;
 }
 
 th,
@@ -388,6 +400,7 @@ h2 {
 }
 input {
   display: flex;
+  width:75%;
   margin-block: 4rem;
   height: 3rem;
   border: 2px solid #e7c162;
