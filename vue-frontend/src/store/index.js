@@ -15,7 +15,8 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    recentProducts: null
+    recentProducts: null,
+    viewProduct:null,
   },
   getters: {
   },
@@ -34,6 +35,9 @@ export default createStore({
     },
     setRecentProducts(state, value) {
       state.recentProducts = value
+    },
+    setViewProduct(state, value){
+      state.viewProduct = value
     }
   },
   actions: {
@@ -80,7 +84,7 @@ export default createStore({
         console.log(id);
         const response = await axios.get(`${apiURL}products/${id}`)
         const result = response.data
-        console.log(result)
+        console.log('tester'+result)
         if (result) {
           context.commit('setProduct', result)
           
