@@ -99,11 +99,12 @@ export default createStore({
     },
     async fetchUsers(context) {
       try {
-        const { result, msg} = await (await axios.get(`${apiURL}user`)).data
+        const response =  await axios.get(`${apiURL}users`)
+        const result = await response.data
         if (result) {
           context.commit('setUsers', result)
         } else {
-          toast.error(`${msg}`, {
+          toast.error(`dfghjk`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
@@ -135,19 +136,42 @@ export default createStore({
         })
       }
     },
-    async editProduct({commit}, {id, name, amount, url}){
+    async editProduct({commit}, {id, name, amount, url, category, quantity}){
         const res = await axios({
           method: "PATCH",
           data: {
             name: name,
             amount:amount,
-            prodUrl:url
+            prodUrl:url,
+            category: category,
+            quantity: quantity
           },
           withCredentials: true,
           url: `${apiURL}products/update/${id}`,
         })
         console.log(res.data)
         commit('setProducts',res.data)
+      },
+
+      async editUser({commit}, {id, first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile}){
+        const res = await axios({
+          method: "PATCH",
+          data: {
+            id,
+            first_name,
+            last_name,
+            user_age,
+            gender,
+            user_role,
+            email_add,
+            user_pass,
+            user_profile
+          },
+          withCredentials: true,
+          url: `${apiURL}users/update/${id}`,
+        })
+        console.log(res.data)
+        commit('setUsers',res.data)
       },
     async deleteProduct({commit}, {id}){
       const res = await axios({
@@ -158,21 +182,44 @@ export default createStore({
     console.log(res.data)
         commit('setProducts',res.data)
   },
-    async addProduct({commit}, {name, amount,prodUrl}){
+    async addProduct({commit}, {name, amount,prodUrl, category, quantity}){
       const res = await axios({
         method: "POST",
         data: {
-          name,
-          amount,
-          prodUrl
+          name: name,
+          amount: amount,
+          prodUrl: prodUrl,
+          category: category,
+          quantity: quantity
         },
         withCredentials: true,
         url: `${apiURL}products/addProduct`
       })
       console.log(res.data)
         commit('setProducts',res.data)
+    },
+    async addUser({commit}, {newUserName, newLastName, newAge, newGender, newRole, newEmail, newPass, newUserProfile}){
+      const res = await axios({
+        method: "POST",
+        data: {
+          newUserName,
+          newLastName,
+          newAge, 
+        newGender, 
+        newRole,
+        newEmail,
+        newPass,
+        newUserProfile
+
+        },
+        withCredentials: true,
+        url: `${apiURL}users/addUser`
+      })
+      console.log(res.data)
+        commit('setUsers',res.data)
     }
   },
+  
   modules: {
   }
 })

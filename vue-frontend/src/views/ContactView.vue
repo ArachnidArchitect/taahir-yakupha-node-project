@@ -1,18 +1,22 @@
 <template>
     <div class="container-fluid">
+        <form action="https://formspree.io/f/mblrpode"
+        method="POST">
+           
         <div class="row">
             <div class="col">
                 <h2>Got something you'll like to share?</h2>
                 <p>We are glistening</p>
-                <input type="text" placeholder="My query is related to...">
-                <input type="text" placeholder="Email Address">
-                <input type="text" placeholder="Message">
+                <input type="text" placeholder="My query is related to..." name="query" required>
+                <input type="text" placeholder="Email Address" name="email" required>
+                <input type="text" placeholder="Message" name="message" required>
             </div>
             <div class="col">
                 <img src="https://yakuphantonintshi.github.io/myimages/Images/Diamond_ring.png" alt="pic" width="400px" height="430px">
             </div>
         </div>
-        <button class="btn">SEND MESSAGE</button>
+        <button class="btn" type="submit">SEND MESSAGE</button>
+    </form>
     </div>
 </template>
 
