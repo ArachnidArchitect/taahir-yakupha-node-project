@@ -84,7 +84,7 @@ a {
   align-items: end;
 }
 
-@media screen and (max-width: 300px) { 
+@media screen and (max-width: 430px) { 
   .card{
     display: none;
   }
@@ -127,7 +127,7 @@ a {
   font-family: "Tinos", serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3.5em;
+  font-size: 3em;
 }
 .rubies {
   color: #decb9d;

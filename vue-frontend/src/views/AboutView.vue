@@ -32,7 +32,12 @@
  span{
   color: #decb9d;
  }
-
+@media screen and (max-width : 400px){
+  img{
+    width: 280px;
+    --bs-gutter-x: 0;
+  }
+}
  
 
 
