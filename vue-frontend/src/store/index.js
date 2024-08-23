@@ -137,19 +137,41 @@ export default createStore({
     },
     async editProduct({commit}, {id, name, amount, url}){
         const res = await axios({
-          method: "POST",
+          method: "PATCH",
           data: {
             name: name,
             amount:amount,
             prodUrl:url
           },
           withCredentials: true,
-          url: `${apiURL}/update/${id}`,
+          url: `${apiURL}products/update/${id}`,
         })
-        console.log(res.json())
-        commit('setProducts',res.json())
+        console.log(res.data)
+        commit('setProducts',res.data)
       },
-
+    async deleteProduct({commit}, {id}){
+      const res = await axios({
+        method: "DELETE",
+        url: `${apiURL}products/delete/${id}`,
+        
+    })
+    console.log(res.data)
+        commit('setProducts',res.data)
+  },
+    async addProduct({commit}, {name, amount,prodUrl}){
+      const res = await axios({
+        method: "POST",
+        data: {
+          name,
+          amount,
+          prodUrl
+        },
+        withCredentials: true,
+        url: `${apiURL}products/addProduct`
+      })
+      console.log(res.data)
+        commit('setProducts',res.data)
+    }
   },
   modules: {
   }

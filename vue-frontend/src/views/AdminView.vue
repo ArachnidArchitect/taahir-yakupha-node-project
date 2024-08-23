@@ -29,9 +29,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="text" placeholder="product name" />
-            <input type="text" placeholder="image url" />
-            <input type="text" placeholder="amount" />
+            <input type="text" placeholder="product name" id="new-prod-name" />
+            <input type="text" placeholder="amount"  id="new-prod-amount"/>
+            <input type="text" placeholder="image url"  id="new-prod-url"/>
           </div>
           <div class="modal-footer">
             <button
@@ -41,7 +41,8 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <!-- tabme -->
+            <button type="button" class="btn btn-primary" @click="addProd()">Save changes</button>
           </div>
         </div>
       </div>
@@ -100,14 +101,13 @@
             >
               Close
             </button>
-            <!-- tabme -->
-            <button type="button" class="btn btn-primary" @click="editProd(currProd.products_id)">Save changes</button>
+            <button type="button" class="btn btn-primary" @click="editProd(selectedProd)">{{selectedProd}}Save changes</button>
           </div>
         </div>
       </div>
     </div>
 
-            <button type="button" class="delete">
+            <button type="button" class="delete" @click="deleteProd(product.products_id)">
               <i class="bi bi-trash"></i>
             </button>
           </td>
@@ -185,6 +185,11 @@
 
 <script>
 export default {
+  data(){
+    return {
+      selectedProd:null,
+    }
+  },
  
   computed: {
     products() {
@@ -193,6 +198,8 @@ export default {
   },
   methods:{
     currItem(id){
+      this.selectedProd = id
+      console.log(this.selectedProd)
         this.$store.dispatch("fetchProduct", {id:id})
     },
     currProd(){
@@ -203,9 +210,30 @@ export default {
         let editedName = document.getElementById('edited-name').value
         let editedAmount = document.getElementById('edited-amount').value
        let editedUrl = document.getElementById('edited-url').value
+      //  let backdrop = document.querySelector('.modal-backdrop')
+      //  backdrop.style.display='none'
+      location.reload()
 
        this.$store.dispatch("editProduct", {id:id, name:editedName, amount:editedAmount, url:editedUrl})
+    },
+    deleteProd(id){
+      if(confirm("are you sure you want to delete this item")){
+        this.$store.dispatch('deleteProduct', {id:id})
+      }else{
+        alert("action was aborted")
+      }
+      
+    },
+    // tabme
+    addProd(){
+      let newProdName = document.getElementById('new-prod-name').value
+      let newProdAmount = document.getElementById('new-prod-amount').value
+      let newProdUrl = document.getElementById('new-prod-url').value
+
+      this.$store.dispatch('addProduct', {name:newProdName, amount:newProdAmount, prodUrl:newProdUrl})
+
     }
+
   },
   mounted() {
     this.$store.dispatch("fetchProducts");
