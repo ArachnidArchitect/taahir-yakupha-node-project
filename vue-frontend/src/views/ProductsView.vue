@@ -12,8 +12,8 @@
             </template>
             <template #cardBody>
                 <div class="row">
-              <div class="lead">Qty:{{ product.quantity }}</div >
-              <div >R{{ product.amount }}</div >
+              <div>Qty:{{ product.quantity }}</div >
+              <div>R{{ product.amount }}</div >
             </div>
               <button type="button" class="product" @click="setViewProduct(product.products_id)">VIEW MORE DETAILS</button>
             </template>
@@ -91,6 +91,7 @@
     color: #e7c162;
     border-top: 2px solid #e7c162;
     border-left: 2px solid #e7c162;
+    margin-top: 1rem;
  }
  .product:hover{
     background-color: #e7c162;

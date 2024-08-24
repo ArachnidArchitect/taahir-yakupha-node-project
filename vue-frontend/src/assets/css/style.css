@@ -42,6 +42,3 @@ img[alt='logo'] {
     display: grid;
     grid-template-rows: auto minmax(100dvh, 100%) auto;
 }
-@media screen and (max-width: 500px){
-    
-}
