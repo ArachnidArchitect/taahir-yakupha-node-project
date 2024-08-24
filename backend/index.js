@@ -9,7 +9,7 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(cors({
-    origin:'http://localhost:8080',
+    origin:'*',
     credentials:true
 }))
 app.use(express.static('public'))
