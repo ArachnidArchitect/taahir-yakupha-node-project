@@ -1,24 +1,28 @@
 <template>
-    <div class="container-fluid">
-        <form action="https://formspree.io/f/mblrpode"
-        method="POST">
-           
-        <div class="row">
-            <div class="col">
-                <h2>Got something you'll like to share?</h2>
-                <p>We are glistening</p>
-                <input type="text" placeholder="My query is related to..." name="query" required>
-                <input type="text" placeholder="Email Address" name="email" required>
-                <input type="text" placeholder="Message" name="message" required>
+    <div class="container-fluid" v>
+        
+        <form   action="https://formcarry.com/s/Bt_uKkxI8fz" method="POST" enctype="multipart/form-data">
+  
+            <div class="row">
+                <div class="col">
+                    <h2>Got something you'll like to share?</h2>
+                    <p>We are glistening</p>
+                    <input type="text" placeholder="My query is related to..." name="query" id="query" required>
+                    <input type="text" placeholder="Email Address" name="email" id="email" required>
+                    <textarea placeholder="Message" name="message" id="message" required></textarea>
+                </div>
+                <div class="col">
+                    <img src="https://yakuphantonintshi.github.io/myimages/Images/Diamond_ring.png" alt="pic" width="400px" height="430px">
+                </div>
             </div>
-            <div class="col">
-                <img src="https://yakuphantonintshi.github.io/myimages/Images/Diamond_ring.png" alt="pic" width="400px" height="430px">
-            </div>
-        </div>
-        <button class="btn" type="submit">SEND MESSAGE</button>
-    </form>
+            <button class="btn" type="submit">SEND MESSAGE</button>
+        </form>
+ 
     </div>
+
 </template>
+
+
 
 <style scoped>
 img{
@@ -27,7 +31,7 @@ img{
     margin-top: 4rem;
     background: transparent;
 }
-input{
+:is(input, textarea){
     display: block;
     margin: 4rem;
     height: 3rem;
@@ -67,6 +71,7 @@ p{
         width: 300px;
     }
 }
+
 
 
 

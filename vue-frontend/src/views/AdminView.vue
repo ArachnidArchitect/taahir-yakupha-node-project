@@ -134,7 +134,7 @@
       <td>{{ user.user_role }}</td>
       <td>{{ user.email_add }}</td>
       <td>{{ user.user_pass }}</td>
-      <td><img :src="user.user_profile" alt="" width="50px" /></td>
+      <td><img :src="user.user_profile" alt="" width="200px" /></td>
 
       <td>
         <button type="button" class="edit" data-bs-toggle="modal" data-bs-target="#editUser" >
@@ -358,7 +358,7 @@ export default {
        let editedUrl = document.getElementById('edited-url').value
        let editedDesc = document.getElementById('edited-desc').value
        
-       this.$store.dispatch("editProduct", {id:id, name:editedName, amount:editedAmount, url:editedUrl, category: editedCategory, quantity: editedQuantity})
+       this.$store.dispatch("editProduct", {id:id, name:editedName, amount:editedAmount, url:editedUrl, category: editedCategory, quantity: editedQuantity, desc:editedDesc})
        location.reload()
     },
     editUser(id) {

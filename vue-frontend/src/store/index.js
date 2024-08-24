@@ -132,7 +132,7 @@ export default createStore({
           context.commit('setUser', data)
           console.log(data)
         } else {
-          toast.error(`${msg}`, {
+          toast.error(`jhgfd`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
