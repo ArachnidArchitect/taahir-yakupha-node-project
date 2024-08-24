@@ -22,7 +22,7 @@
           <h5 class="card-title">24K Gold Earrings</h5>
           <p class="card-text">R2000</p>
           <p class="card-text">500g</p>
-          <a href="#" class="btn btn-primary">PRODUCT DETAILS</a>
+          <a href="#" class="btn btn-primary" @click="setViewProduct(12)">PRODUCT DETAILS</a>
         </div>
       </div>
     </div>
@@ -33,7 +33,12 @@
 export default {
   name: "HomeView",
   components: {},
-};
+  methods: {
+    setViewProduct(id) {
+      this.$router.push({ name: 'singleProduct', params: { id: id } })
+    },
+  },
+}
 </script>
 
 <style scoped>

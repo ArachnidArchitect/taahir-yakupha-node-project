@@ -105,8 +105,10 @@ export default createStore({
       try {
         const response =  await axios.get(`${apiURL}users`)
         const result = await response.data
+        console.log(result);
         if (result) {
           context.commit('setUsers', result)
+          
         } else {
           toast.error(`dfghjk`, {
             autoClose: 2000,
@@ -120,15 +122,17 @@ export default createStore({
         })
       }
     },
-    async fetchUser(context, id) {
+    async fetchUser(context, {id}) {
+      console.log(id)
       try {
-        const {data,msg} = await (await axios.get(`${apiURL}users/${id}`)).data
+        const response =  await axios.get(`${apiURL}users/${id}`)
+        const data = response.data
         console.log(data)
         if (data) {
           context.commit('setUser', data)
           console.log(data)
         } else {
-          toast.error(`${msg}`, {
+          toast.error(`jhgfd`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
@@ -140,7 +144,7 @@ export default createStore({
         })
       }
     },
-    async editProduct({commit}, {id, name, amount, url, category, quantity}){
+    async editProduct({commit}, {id, name, amount, url, category, quantity,desc}){
         const res = await axios({
           method: "PATCH",
           data: {
@@ -148,7 +152,8 @@ export default createStore({
             amount:amount,
             prodUrl:url,
             category: category,
-            quantity: quantity
+            quantity: quantity,
+            description:desc
           },
           withCredentials: true,
           url: `${apiURL}products/update/${id}`,

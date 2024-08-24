@@ -1,5 +1,61 @@
 <template>
-  <div>
+  <div class="mobile-admin">
+    <div class="mobile-users-blob">
+      <h1>USERS</h1>
+      <div class="admin-mobile-column">
+        <div class="admin-mobile-row">
+          
+          <details v-for="userid in users" :key="userid" >
+          <summary @click="currUserId(userid.user_id)">{{userid.user_id}}Taahir DU TOit 19 M A </summary>
+          
+          <div class="mobile-users-table-row">
+            
+          <div class="mobile-users-table-column alt1">id</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-id-input"><input type="text" :value="user.user_id"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">first_name</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-fname-input"><input type="text" :value="user.first_name"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">last_name</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-lname-input"><input type="text" :value="user.last_name"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">age</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-age-input"><input type="text" :value="user.user_age"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">gender</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-gender-input"><input type="text" :value="user.gender"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">Role</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-role-input"><input type="text" :value="user.user_role"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">Email</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-email-input"><input type="text" :value="user.email_add"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">password</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-password-input"><input type="text" :value="user.user_pass"></div>
+          </div>
+          <div class="mobile-users-table-row">
+          <div class="mobile-users-table-column alt1">profile</div>
+            <div class="mobile-users-table-column alt2" v-for="user in currUser()" :key="user" id="mobile-user-profile-input"><input type="text" :value="user.user_profile"></div>
+          </div>
+          <button @click="editMobileUser(userid.user_id)">save changes</button>
+        </details>
+      
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- code for desktop -->
+  <div class="desktop-admin">
     <div class="user">
 
 <h2>USER TABLE</h2>
@@ -81,7 +137,7 @@
       <td><img :src="user.user_profile" alt="" width="200px" /></td>
 
       <td>
-        <button type="button" class="edit" data-bs-toggle="modal" data-bs-target="#editUser">
+        <button type="button" class="edit" data-bs-toggle="modal" data-bs-target="#editUser" >
           <i class="bi bi-pencil-square"></i>
 
 <!-- Modal -->
@@ -228,7 +284,7 @@
             <input type="text" :value="currProduct.prodUrl" id="edited-url" placeholder="Image url" />
             <input type="text" :value="currProduct.quantity"  id="edited-quantity" placeholder="quantity">
             <input type="text" :value="currProduct.category"  id="edited-category" placeholder="category">
-            <input type="text" :value="currProduct.description"  id="edited-description" placeholder="description">
+            <input type="text" :value="currProduct.description"  id="edited-desc" placeholder="description">
           </div>
           <div class="modal-footer">
             <button
@@ -283,8 +339,15 @@ export default {
       // console.log(this.selectedProd)
         this.$store.dispatch("fetchProduct", {id:id})
     },
+    currUserId(id){
+      console.log(id)
+        this.$store.dispatch("fetchUser", {id:id})
+    },
     currProd(){
       return this.$store.state.product
+    },
+    currUser(){
+      return this.$store.state.user
     },
     editProd(id){
         // console.log(id)
@@ -293,8 +356,9 @@ export default {
        let editedCategory = document.getElementById('edited-category').value
        let editedQuantity = document.getElementById('edited-quantity').value
        let editedUrl = document.getElementById('edited-url').value
+       let editedDesc = document.getElementById('edited-desc').value
        
-       this.$store.dispatch("editProduct", {id:id, name:editedName, amount:editedAmount, url:editedUrl, category: editedCategory, quantity: editedQuantity})
+       this.$store.dispatch("editProduct", {id:id, name:editedName, amount:editedAmount, url:editedUrl, category: editedCategory, quantity: editedQuantity, desc:editedDesc})
        location.reload()
     },
     editUser(id) {
@@ -309,6 +373,19 @@ export default {
 
       this.$store.dispatch("editUser", {id, userName, lastname, age, gender, userRole, email, password, profile })
       location.reload()
+    },
+    editMobileUser(id){
+      let userName = document.querySelector('#mobile-user-fname-input').value
+      let lastname = document.querySelector('#mobile-user-lname-input').value
+      let age = document.querySelector('#mobile-user-age-input').value
+      let gender = document.querySelector('#mobile-user-gender-input').value
+      let userRole = document.querySelector('#mobile-user-role-input').value
+      let email = document.querySelector('#mobile-user-email-input').value
+      let password = document.querySelector('#mobile-user-password-input').value
+      let profile = document.querySelector('#mobile-user-profile-input').value
+       
+       this.$store.dispatch("editUser", {id, userName, lastname, age, gender, userRole, email, password, profile })
+       location.reload()
     },
     deleteProd(id){
       if(confirm("are you sure you want to delete this item")){
@@ -359,6 +436,31 @@ export default {
 </script>
 
 <style scoped>
+/* tabme */
+details{
+  color:white
+}
+.mobile-users-table-row{
+  display: flex; 
+  flex-direction:row;
+}
+.mobile-users-table-column{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  height: 2em;
+}
+.mobile-users-table-column> input{
+  height: 1.5em;
+  margin:0;
+}
+.alt1{
+  width:8em;
+  background-color:#e7c162;
+}
+.desktop-admin{
+  display:none
+}
 table,
 th,
 td {
