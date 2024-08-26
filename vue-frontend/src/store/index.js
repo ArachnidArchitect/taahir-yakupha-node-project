@@ -163,18 +163,19 @@ export default createStore({
       },
 
       async editUser({commit}, {id, first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile}){
+        console.log(id, first_name, last_name, user_age, gender, user_role, email_add, user_pass, user_profile)
         const res = await axios({
           method: "PATCH",
           data: {
             id,
-            first_name,
-            last_name,
-            user_age,
+            fname: first_name,
+            lname: last_name,
+            age: user_age,
             gender,
-            user_role,
-            email_add,
-            user_pass,
-            user_profile
+            role: user_role,
+            email: email_add,
+            password: user_pass,
+            profile: user_profile
           },
           withCredentials: true,
           url: `${apiURL}users/update/${id}`,
@@ -191,7 +192,8 @@ export default createStore({
     console.log(res.data)
         commit('setProducts',res.data)
   },
-    async addProduct({commit}, {name, amount,prodUrl, category, quantity}){
+    async addProduct({commit}, {name, amount,prodUrl, category, quantity, description}){
+      console.log(description)
       const res = await axios({
         method: "POST",
         data: {
@@ -199,7 +201,8 @@ export default createStore({
           amount: amount,
           prodUrl: prodUrl,
           category: category,
-          quantity: quantity
+          quantity: quantity,
+          description: description
         },
         withCredentials: true,
         url: `${apiURL}products/addProduct`
