@@ -5,7 +5,7 @@
         type="button"
         class="add"
         data-bs-toggle="modal"
-        data-bs-target="#user-table"
+        data-bs-target="#user-table-mobile"
       >
         <i class="bi bi-plus-square"></i> | ADD NEW USER
       </button>
@@ -13,7 +13,7 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        id="user-table"
+        id="user-table-mobile"
         tabindex="-1"
         aria-labelledby="user-tableLabel"
         aria-hidden="true"
@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <h1>USERS</h1>
+      <h1 class="table-indicators">USERS</h1>
 
       <div class="admin-mobile-column">
         <div class="admin-mobile-row" v-if="users">
@@ -206,9 +206,9 @@
                 />
               </div>
             </div>
-            <button @click="deleteUser(userid.user_id)">DELETE USER</button>
-            <button @click="editMobileUser(userid.user_id)">
-              save changes
+            <button @click="deleteUser(userid.user_id)" class="delete">Delete User</button>
+            <button @click="editMobileUser(userid.user_id)" class="save">
+              Save 
             </button>
           </details>
         </div>
@@ -225,14 +225,14 @@
         type="button"
         class="add"
         data-bs-toggle="modal"
-        data-bs-target="#add-product"
+        data-bs-target="#add-product-mobile"
       >
         <i class="bi bi-plus-square"></i> | ADD NEW ITEM
       </button>
       <!-- this is the add item modal  -->
       <div
         class="modal fade"
-        id="add-product"
+        id="add-product-mobile"
         tabindex="-1"
         aria-labelledby="add-product-Label"
         aria-hidden="true"
@@ -290,7 +290,7 @@
           </div>
         </div>
       </div> 
-      <h1>PRODUCTS</h1>
+      <h1 class="table-indicators">PRODUCTS</h1>
 <!-- tabme -->
       <div class="admin-mobile-column">
         <div class="admin-mobile-row" v-if="products">
@@ -391,9 +391,9 @@
                 />
               </div>
             </div>
-            <button @click=" deleteProd(product.products_id)">DELETE USER</button>
-            <button @click="editProd(product.products_id)">
-              save changes
+            <button @click=" deleteProd(product.products_id)" class="delete">Delete Item</button>
+            <button @click="editProd(product.products_id)" class="save">
+              Save 
             </button>
           </details>
         </div>
@@ -962,11 +962,27 @@ export default {
 
 <style scoped>
 /* tabme */
+.admin-mobile{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height:100%;
+}
+.mobile-products-blob{
+  margin-top: 3em;
+}
 .mobile-admin{
   display:none;
 }
 details {
   color: white;
+}
+.table-indicators{
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left;
 }
 .mobile-users-table-row {
   display: flex;
@@ -1026,12 +1042,14 @@ td{
   background-color: rgb(52, 216, 52);
   color: white;
   padding: 7px;
-  border-radius: 4px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   border: transparent;
+  float:right
 }
-:is(.edit, .delete) {
+:is(.edit, .delete,.save) {
   width: 50px;
-  height: 50px;
+  height: 38px;
   margin-inline: 20px;
   border: transparent;
   margin-top: 4px;
@@ -1045,6 +1063,11 @@ td{
 }
 .delete {
   background-color: red;
+  color: white;
+  width: 25%;
+}
+.save{
+  background-color: rgb(52, 216, 52);
   color: white;
   width: 25%;
 }
